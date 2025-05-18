@@ -1,9 +1,9 @@
-<%= form_with(model: todo) do |form| %>
+<%= form_with(model: todo, class: "space-y-4") do |form| %>
   <% if todo.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+    <div class="mb-4 text-red-600">
+      <h2 class="font-bold"><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
 
-      <ul>
+      <ul class="list-disc list-inside">
         <% todo.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -12,16 +12,16 @@
   <% end %>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.label :title, class: "block font-medium text-gray-700" %>
+    <%= form.text_field :title, class: "mt-1 block w-full border-gray-300 rounded-md" %>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <%= form.checkbox :completed, class: "rounded border-gray-300" %>
+    <%= form.label :completed, class: "font-medium text-gray-700" %>
   </div>
 
   <div>
-    <%= form.label :completed, style: "display: block" %>
-    <%= form.checkbox :completed %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit class: "bg-blue-600 text-white px-4 py-2 rounded" %>
   </div>
 <% end %>
